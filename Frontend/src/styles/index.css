@@ -1,0 +1,40 @@
+@import url(./reset.css);
+
+@font-face 
+{
+    font-family: Aeonik-Air;
+    src: url(./fonts/Aeonik-Air.otf);
+}
+
+
+:root 
+{
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+
+
+    --main-bg-color:#8383e8 ;
+    --main-font: 'Aeonik-Air';
+}
+
+
+body 
+{
+    background-color: var(--main-bg-color);
+}
+
+
+#root
+{
+    background: #dbeeff91;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0.6em;
+    border-radius: 7px;
+}
