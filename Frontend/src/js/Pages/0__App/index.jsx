@@ -24,8 +24,8 @@ function App({user,setUser}) {
   const navigate = useNavigate();
 
   
-  /*------------------------ Function's main state ------------------------*/
-  //let {user} = useMainStore((state) => {return state}) //get all properties from center State
+  /*------------------------  App`s Main Store ------------------------*/
+  //let {user,setUser} = useMainStore((state) => {return state}) //get all properties from center State
 
 
   /*------------------------ Check if user logged in ------------------------*/  //the logic is start app with app.jsx then check main state if we have user and check localstorage(YES it is a bad technique) if there is user !! if there is no user go to login page , if there is user but no avatar picture go to avatar selection page

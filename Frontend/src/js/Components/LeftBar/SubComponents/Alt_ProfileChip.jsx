@@ -1,5 +1,5 @@
 //import packages/libraries...
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 //import Styles...
@@ -9,25 +9,50 @@ import { ProfileChipContainer, ProfileChipImage, ProfileChipUserName } from '../
 
 
 //import Local files...
+import useConversationStore from '../../../Stores/conversationStore';
 
 
-function ProfileChip() 
+function ProfileChip({accountUser,details}) 
 {
 
-    const [user, setUser] = useState(null);
+    let {setcurrentOtherUser} = useConversationStore((state =>{ return state}))
+
+
+    const [otherUser, setotherUser] = useState(null);
+
+    
+    useEffect(() => 
+    {   
+        
+        (async ()=>
+        {
+            let otherUserid = details.members.filter((user)=>{return user !== accountUser._id })
+
+            let response = await fetch(`${process.env.SERVER}/api/user/getUserInfo/${otherUserid}`)
+            let data = await response.json()
+
+            setotherUser(data)
+        })()
+    
+      
+    }, [])
+    
+
+    const handleConversationSelections = ()=>
+    {
+        setcurrentOtherUser(otherUser)
+    }
 
 
 
   return (
     <>
-        <ProfileChipContainer>
+        <ProfileChipContainer onClick={handleConversationSelections}>
             <ProfileChipImage
-                src={
-                    'https://api.multiavatar.com/Binx Bond.svg'
-                }
+                src={otherUser?.avatarImage?.image ?`data:image/svg+xml;base64,${otherUser?.avatarImage?.image}` : 'https://api.multiavatar.com/Binx Bond.svg'}
                 alt="Profile picture"
             />
-            <ProfileChipUserName>{user?.username}User Name</ProfileChipUserName>
+            <ProfileChipUserName>{otherUser?.name}</ProfileChipUserName>
         </ProfileChipContainer>
     </>
   )

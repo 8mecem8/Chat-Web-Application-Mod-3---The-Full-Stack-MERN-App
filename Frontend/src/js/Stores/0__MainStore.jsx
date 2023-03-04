@@ -10,11 +10,8 @@ let setMainStore = devtools( (set) =>
 ({
     theme:{},
     user:undefined,
-    bears: 0,
     //------------------------------ Set Methods ------------------------------//
     setUser:(userDetails) => set({user:userDetails}),
-    removeAllBears: () => set({ bears: 0 }),
-    increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
 }))
 
 /*------------------------ Using persist to save data in the browser till we decide to delete ------------------------*/

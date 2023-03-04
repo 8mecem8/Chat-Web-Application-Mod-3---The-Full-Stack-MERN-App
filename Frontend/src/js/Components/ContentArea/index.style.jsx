@@ -10,6 +10,7 @@ export const ContentAreaContainer = styled.div`
     overflow-wrap: anywhere;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
 `
 
@@ -18,6 +19,26 @@ export const ContentAreaContainer = styled.div`
 //---------- SubComponent ----------//
 export const InputMessageContainer = styled.div`
     padding: 10px;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0;
+
+    & button{
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 10px;
+        border: 2px black solid;
+        border-radius: 7px;
+        margin: 0px 5px;
+
+        &:hover
+        {
+            box-shadow: inset 0px 0px 5px 0px #b8adad, 3px 2px 8px 0px #5f5353;
+        }
+        
+    }
     
 `
 
@@ -26,6 +47,11 @@ export const InputMessageContainer = styled.div`
 export const MessagesBox = styled.div`
     padding: 10px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    position: relative;
+    height: 100%;
 `
 
 
@@ -51,6 +77,7 @@ export const AMessageImage = styled.img`
     margin-right: 10px;
 `
 
+//---------- SubComponent ----------//
 export const AMessageText = styled.p`
     padding: 10px;
     border-radius: 20px;
@@ -58,8 +85,17 @@ export const AMessageText = styled.p`
     color: white;
     max-width: 300px;
 `
-
+//---------- SubComponent ----------//
 export const AMessageTime = styled.div`
     font-size: 12px;
     margin-top: 10px;
+`
+
+//---------- SubComponent ----------//
+export const NoConversationText = styled.span`
+    position: absolute;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    cursor: default;
 `

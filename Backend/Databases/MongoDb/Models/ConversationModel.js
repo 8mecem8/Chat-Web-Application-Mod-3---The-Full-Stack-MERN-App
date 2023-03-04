@@ -6,7 +6,7 @@ const { ObjectId } = mongoose.Schema;
 
 
 const ConversationSchema = new mongoose.Schema({
-  userGroup:
+  members:
     [{
       type: ObjectId,
       ref:'User',
@@ -22,11 +22,11 @@ const ConversationSchema = new mongoose.Schema({
 
 
 
-userSchema.plugin(uniqueValidator)
+ConversationSchema.plugin(uniqueValidator)
 
 
 
 
-const ConversationModel = mongoose.model('Conversation', ConversationSchema)
+const conversationModel = mongoose.model('Conversation', ConversationSchema)
 
-module.exports = ConversationModel
+module.exports = conversationModel

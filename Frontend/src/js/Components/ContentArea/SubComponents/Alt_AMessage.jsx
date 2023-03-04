@@ -14,18 +14,22 @@ import { AMessageContainer, AMessageImage, AMessageText, AMessageTime, AMessageT
 
 
 
-function AMessage({message,own=false}) {
+function AMessage({details,message,ByUser,owner}) 
+{
+
+  //console.log(details,ByUser)
+
   return (
     <>
-        <AMessageContainer whose={own ? 'flex-end' : 'flex-start'} /*className={own ? "message own" : "message"}*/>
+        <AMessageContainer whose={owner ? 'flex-end' : 'flex-start'} /*className={own ? "message own" : "message"}*/>
             <AMessageTop>
                 <AMessageImage
-                src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt=""
+                src={ByUser?.avatarImage?.image ?`data:image/svg+xml;base64,${ByUser?.avatarImage?.image}` : 'https://api.multiavatar.com/Binx Bond.svg'}
+                alt="Profile Avatar"
                 />
-                <AMessageText>{message?.text}This is a message coming from far far far far far far away coming throught internet</AMessageText>
+                <AMessageText>{message?.text}</AMessageText>
             </AMessageTop>
-            <AMessageTime>{format(message?.createdAt)} 18.30</AMessageTime>
+            <AMessageTime>{format(details.updatedAt)}</AMessageTime>
         </AMessageContainer>
     </>
   )

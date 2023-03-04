@@ -8,7 +8,7 @@ export const FetchAvatars = async(setAvatars)=>
 
             let FetchedAvatarArray = await new Promise( async(resolve, reject) =>
             {
-                        resolve(Array.from({ length: 1 }, async (arg, i) => 
+                        resolve(Array.from({ length: 10 }, async (arg, i) => 
                     {
                         let response = await fetch(`${process.env.AV_API}/${Math.round((Math.random() * 1000) * (Math.random() * 100) * (Math.random() * 1000))}?apikey=${process.env.AV_API_KEY}`, {method: 'GET',})
                               
@@ -50,8 +50,8 @@ export const setUserAvatar = async(user,selectedAvatar,setUser,loading, setLoadi
 
       if(data)
       {
+        window.location.replace('/login')
         setUser(data)
         setLoading (false)
-        window.location.replace('/login')
       }
 }

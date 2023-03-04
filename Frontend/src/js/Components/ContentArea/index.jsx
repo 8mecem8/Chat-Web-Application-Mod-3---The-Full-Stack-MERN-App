@@ -18,7 +18,7 @@ function ContentArea() {
     <>
       <ContentAreaContainer>
           <MessageSection />
-          <InputMessage />
+          
       </ContentAreaContainer>
     </>
   )
