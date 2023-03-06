@@ -11,7 +11,7 @@ import SelectAvatar from "../../Pages/AvatarSelection";
 
 /*------------------------ App's main state ------------------------*/
 let {user,setUser} = useMainStore.getState(state => state) //get all properties from center State 
-useMainStore.subscribe(state =>  {return user = state?.user,console.log(user,"user")}) //need subscribe to get store updates when using outside of the react component
+useMainStore.subscribe(state =>  {return user = state?.user, console.log(user,"user") }) //need subscribe to get store updates when using outside of the react component
 
 
 

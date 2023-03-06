@@ -26,7 +26,7 @@ function ProfileChip({accountUser,details})
         
         (async ()=>
         {
-            let otherUserid = details.members.filter((user)=>{return user !== accountUser._id })
+            let otherUserid = details.members.filter((user)=>{return user !== accountUser?._id })
 
             let response = await fetch(`${process.env.SERVER}/api/user/getUserInfo/${otherUserid}`)
             let data = await response.json()

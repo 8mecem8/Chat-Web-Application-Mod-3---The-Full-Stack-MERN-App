@@ -6,12 +6,13 @@ import {createJSONStorage, devtools, persist} from 'zustand/middleware'
 
 
 /*------------------------ Basic Settings for App`s Main Storage for Root State ------------------------*/
-let setMainStore = devtools( (set) => 
+let setMainStore = devtools( (set,get) => 
 ({
     theme:{},
     user:undefined,
     //------------------------------ Set Methods ------------------------------//
     setUser:(userDetails) => set({user:userDetails}),
+    getUser:()=>{return  get().user},
 }))
 
 /*------------------------ Using persist to save data in the browser till we decide to delete ------------------------*/

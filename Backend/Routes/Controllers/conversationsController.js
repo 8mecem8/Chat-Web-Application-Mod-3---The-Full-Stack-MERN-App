@@ -32,33 +32,31 @@ exports.GetAllUserConversations = async (req, res)=>
 
 exports.createUpdateConversation = async (req, res)=>
 {
-    console.log("body is ======>",req.body)
 
-    const _id = req.body.conversation ? req.body.conversation._id : undefined
+    const _id = req.body.conID ? req.body.conID : undefined
 
     try 
     {       
-            
-            
             if(_id)
             {
                 const updatedConversation = await conversationModel.findOneAndUpdate(
-                    req.body.conversation._id,
+                    {_id},
                     {
-                        $push: { messages: {...req.body.message} }
+                        $push: { messages: req.body.message }
                     },
-                    {returnNewDocument:true,}
+                    {new:true,}
                 )
                 return res.status(200).json(updatedConversation)
             }
+
             //else
-            const newConverstaion = await new conversationModel(
+             const newConverstaion = await new conversationModel(
                 {
                     members:[...req.body.users],
                     messages:[req.body.message]
                 }).save()
 
-            return res.status(200).json(newConverstaion)
+            return res.status(200).json(newConverstaion) 
     } 
     catch (err) 
     {

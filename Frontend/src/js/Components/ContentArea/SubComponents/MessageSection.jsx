@@ -1,5 +1,5 @@
 //import packages/libraries...
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 
 //import Styles...
@@ -8,20 +8,14 @@ import { MessagesBox,NoConversationText } from '../index.style'
 
 //import Local files...
 import AMessage from './Alt_AMessage'
-import useMainStore from '../../../Stores/0__MainStore'
-import useConversationStore from '../../../Stores/conversationStore'
-import InputMessage from './InputMessage'
 
 
 
-function MessageSection() {
 
-  /*------------------------  App`s Main Store ------------------------*/
-  let {user,setUser} = useMainStore((state) => {return state}) //get all properties from center State
-  let {currentOtherUser,currentConversation,setConversation} = useConversationStore((state =>{ return state}))
+function MessageSection({ScreenCurrentConversation,user,currentOtherUser}) {
 
-  
-  const ScreenCurrentConversation = user.allConversations.map((arg)=>{return arg.members.includes(currentOtherUser._id) ? arg : undefined})
+  const scrollElement = useRef()
+
   
 
   
@@ -29,30 +23,31 @@ function MessageSection() {
     <>
       
         <MessagesBox>
+                  {/* if(isNewConversations) {return <InputMessage />}*/}
         
-                {
-                  !ScreenCurrentConversation[0] 
+              {
+                (ScreenCurrentConversation instanceof Array ? !ScreenCurrentConversation[0] : !ScreenCurrentConversation)//  && !isNewConversations
                   ?
                     <NoConversationText>
                       Open a conversation to start a chat.
                     </NoConversationText>
                   :
-                  <>
-                    <div>
-                        {ScreenCurrentConversation?.map((cnv)=>
-                        {
-                          return cnv?.messages?.map((message,i)=>
-                          {
-                          return <AMessage ByUser={message.sender == user._id ? user : currentOtherUser} owner={message.sender == user._id ? true : false} message={message} details={cnv} key={i}/>
-                          }) 
-                        })}
-                    </div>
                     
-                     <InputMessage />
-                   
-                  </>
-                }
-          
+                    ScreenCurrentConversation?.map((cnv)=>
+                    {
+                      
+                        return cnv?.messages?.map((message,i)=>
+                        {
+                          return(
+                            <div ref={scrollElement} key={i}>
+                              <AMessage  ByUser={message.sender == user._id ? user : currentOtherUser} owner={message.sender == user._id ? true : false} message={message} details={cnv} />
+                           </div>)
+                        }) 
+                    })
+                    
+              }
+              {setTimeout(()=>scrollElement.current?.scrollIntoView({ behavior: "smooth", block: "end"}),200)}
+              {/* scrollElement.current?.scrollTo(0,scrollElement.current.scrollHeight) */}
           <div>
             
           </div>

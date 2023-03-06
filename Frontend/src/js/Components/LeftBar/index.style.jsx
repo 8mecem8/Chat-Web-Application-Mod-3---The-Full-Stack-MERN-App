@@ -10,6 +10,14 @@ export const LeftBarContainer = styled.div`
    overflow-wrap: anywhere;
    display: flex;
    flex-direction: column;
+   overflow: hidden;
+   
+   @media (max-width: 556px)
+    {
+        grid-column:1/21;
+        grid-row: 9/11;
+        
+    }
 
 `
 
@@ -18,11 +26,27 @@ export const LeftBarContainer = styled.div`
 export const SearchContainer = styled.div`
     padding:10px;
 
+    @media (max-width: 556px)
+    {
+       display: none;
+        
+    }
+
 `
 
 //---------- SubComponent ----------//
 export const ListabsContainer = styled.div`
     padding:10px;
+    height: 100%;
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar 
+    { 
+    display: none;  /* Safari and Chrome */
+    background: transparent;
+    }
+
+    /* & * {display:flex;flex-direction:row;overflow-x:scroll;} */
 
 `
 

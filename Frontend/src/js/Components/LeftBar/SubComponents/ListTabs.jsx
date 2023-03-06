@@ -12,6 +12,7 @@ import { ListabsContainer } from '../index.style'
 import ProfileChip from './Alt_ProfileChip'
 import OnlineProfileChip from './Alt_OnlineProfileChip'
 import useMainStore from '../../../Stores/0__MainStore'
+import useConversationStore from '../../../Stores/conversationStore'
 
 
 
@@ -19,21 +20,20 @@ function ListTabs() {
 
     /*------------------------  App`s Main Store ------------------------*/
     let {user,setUser} = useMainStore((state) => {return state}) //get all properties from center State
-
-    /*------------------------ Function's Main state ------------------------*/
-    const [userallconversations, setuserallconversations] = useState([])
+    let {allOnlineUser,userallconversations,setuserallconversations} = useConversationStore((state =>{ return state}))
+    
 
     useEffect(() => 
     {
         (async ()=>
         {
-            let response = await fetch(`${process.env.SERVER}/api/conversations/getAllUserConversations/${user._id}`)
+            let response = await fetch(`${process.env.SERVER}/api/conversations/getAllUserConversations/${user?._id}`)
             let data = await response.json()
             setuserallconversations(data)
             setUser({...user,allConversations:data})
+
         })()
     }, [])
-    
     
 
   return (
@@ -41,7 +41,14 @@ function ListTabs() {
         <ListabsContainer>
             <PTabs>
                 <PTabsItem label="Online Users">
-                    <OnlineProfileChip />
+                    {
+                        allOnlineUser?.map((usr,i)=>
+                        {
+                           return usr.userId == user._id ? null :<OnlineProfileChip userDetails={usr} key={i}/>
+                        })
+                    }
+
+                    
                 </PTabsItem>
                 <PTabsItem label="Messages">
                     {

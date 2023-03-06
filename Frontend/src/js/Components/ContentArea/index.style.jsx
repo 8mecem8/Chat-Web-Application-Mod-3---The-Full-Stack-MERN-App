@@ -12,6 +12,13 @@ export const ContentAreaContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
+
+    @media (max-width: 556px)
+    {
+        grid-column:1/21;
+        grid-row: 2/9;
+        
+    }
 `
 
 
@@ -20,10 +27,7 @@ export const ContentAreaContainer = styled.div`
 export const InputMessageContainer = styled.div`
     padding: 10px;
     display: flex;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    left: 0;
+  
 
     & button{
         white-space: nowrap;
@@ -49,9 +53,13 @@ export const MessagesBox = styled.div`
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
-    position: relative;
     height: 100%;
+
+    &::-webkit-scrollbar 
+    { 
+    display: none;  /* Safari and Chrome */
+    background: transparent;
+    }
 `
 
 
@@ -94,7 +102,7 @@ export const AMessageTime = styled.div`
 //---------- SubComponent ----------//
 export const NoConversationText = styled.span`
     position: absolute;
-    top: 10%;
+    top: 20%;
     font-size: 50px;
     color: rgb(224, 220, 220);
     cursor: default;

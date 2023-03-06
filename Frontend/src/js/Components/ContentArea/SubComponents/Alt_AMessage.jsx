@@ -17,11 +17,11 @@ import { AMessageContainer, AMessageImage, AMessageText, AMessageTime, AMessageT
 function AMessage({details,message,ByUser,owner}) 
 {
 
-  //console.log(details,ByUser)
 
+  
   return (
     <>
-        <AMessageContainer whose={owner ? 'flex-end' : 'flex-start'} /*className={own ? "message own" : "message"}*/>
+        <AMessageContainer whose={owner ? 'flex-end' : 'flex-start'}>
             <AMessageTop>
                 <AMessageImage
                 src={ByUser?.avatarImage?.image ?`data:image/svg+xml;base64,${ByUser?.avatarImage?.image}` : 'https://api.multiavatar.com/Binx Bond.svg'}

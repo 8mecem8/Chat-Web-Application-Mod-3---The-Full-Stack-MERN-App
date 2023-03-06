@@ -8,7 +8,7 @@ export const Container = styled.div`
   font-weight: 600;
   position: absolute;
   margin: 0.2rem;
-  top: 0;
+  top: 15px;
   bottom: 0;
   right: 0;
   left: 0;

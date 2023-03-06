@@ -15,4 +15,4 @@ import '../styles/index.css'
 
 
 
-createRoot(document.getElementById("root")).render(<React.StrictMode><PorscheDesignSystemProvider><RouterProvider router={Router} /></PorscheDesignSystemProvider></React.StrictMode>)
+createRoot(document.getElementById("root")).render(<PorscheDesignSystemProvider><RouterProvider router={Router} /></PorscheDesignSystemProvider>)

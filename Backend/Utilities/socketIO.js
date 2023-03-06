@@ -1,4 +1,5 @@
 const { Server } = require("socket.io");
+const { socketUsers } = require("./socketUsers");
 
 
 
@@ -17,11 +18,39 @@ const { Server } = require("socket.io");
         });
     
 
+        let {addUser,removeUser,getUser,getAllUsers} = new socketUsers()
 
+        
 
-    io.on('connection', socket => 
+    io.on('connection', (socket) => 
     {
-        console.log('New Connections Established from Frontend using socket.io',socket.id)
+        //console.log('New Connections Established from Frontend using socket.io',socket.id)
         io.emit('welcome',"welcome to server, Connection has been established")
+
+
+        socket.on('addUser',(userDbID)=>
+        {
+            addUser(userDbID,socket.id) // add user to user list to easly send data directly user regarless of chancing socket id
+            io.emit("getUsers", getAllUsers()); // sent user list to frontend as we need online users list
+            //console.log('============>',getAllUsers())
+        })
+
+
+        socket.on('sendMessage',({sender,receiverId,usermessage})=>
+        {
+           let user = getUser(receiverId)
+
+           io.to(user.socketId).emit('getMessage',{sender,usermessage})
+
+        })
+
+
+        socket.on("disconnect", () => 
+        {
+            //console.log("a user disconnected!");
+            removeUser(socket.id);
+        
+            io.emit("getUsers", getAllUsers());
+        });
     })
 } 
