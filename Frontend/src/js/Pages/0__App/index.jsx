@@ -64,7 +64,7 @@ function App() {
 
 
 
-    let ScreenCurrentConversation = Object.keys(user).length > 2 ? user?.allConversations?.filter((arg)=>{return arg?.members?.includes(currentOtherUser?._id)}) : undefined
+    let ScreenCurrentConversation = user && Object.keys(user).length > 2 ? user?.allConversations?.filter((arg)=>{return arg?.members?.includes(currentOtherUser?._id)}) : undefined
     
 
     if(newSocketMessage)
