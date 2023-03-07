@@ -8,13 +8,13 @@ import { Container,} from './index.style'
 
 
 //import Local files...
-import useMainStore from '../../Stores/0__MainStore'
+import useMainStore from '../../Stores/0__MainStore.jsx'
 import '../../Components/Router/index' //need to call router/index.js file to recall changes in the main state to pass all components
-import authSubComponent from '../../Components/authSubComponent';
-import LeftBar from '../../Components/LeftBar';
-import TopBar from '../../Components/TopBar';
-import ContentArea from '../../Components/ContentArea';
-import useConversationStore from '../../Stores/conversationStore';
+import authSubComponent from '../../Components/authSubComponent.jsx';
+import LeftBar from '../../Components/LeftBar/index.jsx';
+import TopBar from '../../Components/TopBar/index.jsx';
+import ContentArea from '../../Components/ContentArea/index.jsx';
+import useConversationStore from '../../Stores/conversationStore.jsx';
 
 
 const socket = io(`${process.env.SERVER}`,{ transports: ["websocket"] });
@@ -28,7 +28,7 @@ function App() {
 
   /*------------------------  App`s Main Store ------------------------*/
   let {user,setUser} = useMainStore((state) => {return state}) //get all properties from center State
-  let {setcurrentOtherUser,setallOnlineUser,setuserallconversations,currentOtherUser,isNewConversations} = useConversationStore((state =>{ return state}))
+  let {setcurrentOtherUser,setallOnlineUser,setuserallconversations,currentOtherUser} = useConversationStore((state =>{ return state}))
 
   
   /*------------------------ Check if user logged in ------------------------*/  //the logic is start app with app.jsx then check main state if we have user and check localstorage(YES it is a bad technique) if there is user !! if there is no user go to login page , if there is user but no avatar picture go to avatar selection page
@@ -64,7 +64,7 @@ function App() {
 
 
 
-    let ScreenCurrentConversation = user?.allConversations?.filter((arg)=>{return arg?.members?.includes(currentOtherUser?._id)})
+    let ScreenCurrentConversation = Object.keys(user).length > 2 ? user?.allConversations?.filter((arg)=>{return arg?.members?.includes(currentOtherUser?._id)}) : undefined
     
 
     if(newSocketMessage)

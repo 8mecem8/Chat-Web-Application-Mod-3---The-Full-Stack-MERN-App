@@ -16,7 +16,7 @@
 
 
 
-    --main-bg-color:#8383e8 ;
+    --main-bg-color:#83e88a  ; /* #83a7e8 //#83e8e6 //#e8a483 */
     --main-font: 'Aeonik-Air';
 }
 
@@ -29,12 +29,13 @@ body
 
 #root
 {
-    background: #dbeeff91;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
     margin: 0.6em;
-    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

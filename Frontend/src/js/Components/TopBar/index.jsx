@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-import { TopBarContainer } from './index.style'
-import { PHeadline } from '@porsche-design-system/components-react';
+import { TopBarContainer,LogoContainer,TopBarCover,TopButtonsContainer } from './index.style'
+import LogoLogin from "../../../assets/chat-box.png"
 
 function TopBar() {
 
@@ -11,8 +11,17 @@ function TopBar() {
   return (
     <>
         <TopBarContainer>
-          <h1>this is TOPTOP bar lorem ipsum asdjasdkasjdnjasndjansdjajsdnajsd</h1>
-          <PHeadline variant="headline-1">Headline from Porsche Design System</PHeadline>
+          <TopBarCover>
+
+            <LogoContainer>
+              <img src={LogoLogin} alt='loging screen Logo'/>
+              <h2>Chat-Pal</h2>
+            </LogoContainer>
+
+            <TopButtonsContainer>
+                <button>Logout</button>
+            </TopButtonsContainer>
+          </TopBarCover>
         </TopBarContainer>
     </>
   )

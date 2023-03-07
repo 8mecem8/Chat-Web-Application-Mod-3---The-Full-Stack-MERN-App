@@ -56,7 +56,7 @@ function InputMessage({conID,sender,users,socket,receiverId}) {
 
   return (
     <InputMessageContainer>
-        <input value={usermessage} onKeyDown={handleKeyPress} onChange={(e)=>{setusermessage(e.target.value)}} placeholder='Write a Message' style={{border:'2px purple solid',padding:'5px',width:'100%',fontFamily: 'var(--main-font) !important'}} type='text' />
+        <input value={usermessage} onKeyDown={handleKeyPress} onChange={(e)=>{setusermessage(e.target.value)}} placeholder='Write a Message'  type='text' />
         <button type="submit" disabled={!usermessage ? true : false} onClick={handleMessage}>Enter</button>
     </InputMessageContainer>
   )

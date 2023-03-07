@@ -35,7 +35,6 @@ function ListTabs() {
         })()
     }, [])
     
-
   return (
     <>
         <ListabsContainer>
@@ -51,11 +50,17 @@ function ListTabs() {
                     
                 </PTabsItem>
                 <PTabsItem label="Messages">
+                    
                     {
-                        userallconversations.map((cv,i)=>
+                        
+                        userallconversations instanceof Array  ? 
+                        
+                        userallconversations?.map((cv,i)=>
                         {
                            return <ProfileChip accountUser={user} details={cv} key={i}/>
                         })
+
+                        : null
                     }
                     
                 </PTabsItem>

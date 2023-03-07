@@ -2,8 +2,7 @@ import { styled } from '@linaria/react';
 
 
 export const LeftBarContainer = styled.div`
-   border: 3px solid blue;
-   grid-column:1/4;
+   grid-column:1/5;
    grid-row: 2/11;
    margin: 0.2rem;
    white-space: pre-wrap;
@@ -11,6 +10,34 @@ export const LeftBarContainer = styled.div`
    display: flex;
    flex-direction: column;
    overflow: hidden;
+   background: rgba(255,255,255,0.25);
+   backdrop-filter: blur(15px);
+   border:1px solid #fff;
+   border-bottom: 1px solid rgba(255,255,255,0.25);
+   border-right: 1px solid rgba(255,255,255,0.25);
+   box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+   border-radius: 20px;
+
+
+    @media (max-width: 1000px)
+    {
+        grid-column:1/6;
+    }
+
+    @media (max-width: 812px)
+    {
+        grid-column:1/7;
+    }
+    
+    @media (max-width: 675px)
+    {
+        grid-column:1/8;
+    }
+
+    @media (max-width: 585px)
+    {
+        grid-column:1/9;
+    }
    
    @media (max-width: 556px)
     {
@@ -25,12 +52,40 @@ export const LeftBarContainer = styled.div`
 //---------- SubComponent ----------//
 export const SearchContainer = styled.div`
     padding:10px;
+    
 
     @media (max-width: 556px)
     {
        display: none;
         
     }
+
+    > input
+    {
+        border-radius: 25px;
+        padding:5px;
+        width:100%;
+        font-family: var(--main-font) !important;
+        background: rgba(255,255,255,0.25);
+        backdrop-filter: blur(15px);
+        border:1px solid #fff !important;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+        border-right: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+
+        ::placeholder
+        {
+            text-align: center;
+        }
+
+        :enabled
+        {
+            text-align: center;
+        }
+
+
+    }
+
 
 `
 

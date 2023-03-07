@@ -5,7 +5,7 @@ import {RouterProvider,} from "react-router-dom";
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 
 //import Local files...
-import Router from "./Components/Router";
+import Router from "./Components/Router/index";
 import './Components/Router/index' //need to call router/index.js file to recall changes in the main state to pass all components
 
 
@@ -15,4 +15,4 @@ import '../styles/index.css'
 
 
 
-createRoot(document.getElementById("root")).render(<PorscheDesignSystemProvider><RouterProvider router={Router} /></PorscheDesignSystemProvider>)
+createRoot(document.getElementById("root")).render(<React.StrictMode><PorscheDesignSystemProvider><RouterProvider router={Router} /></PorscheDesignSystemProvider></React.StrictMode>)

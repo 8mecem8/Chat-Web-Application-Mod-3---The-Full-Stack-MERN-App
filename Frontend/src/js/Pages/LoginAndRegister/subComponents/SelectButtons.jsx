@@ -9,7 +9,7 @@ const ButtonsDiv = styled.div`
   display: flex;
   flex-direction: column;
   place-content: center;
-  padding: 40px;
+  padding: 22px;
 `
 
 

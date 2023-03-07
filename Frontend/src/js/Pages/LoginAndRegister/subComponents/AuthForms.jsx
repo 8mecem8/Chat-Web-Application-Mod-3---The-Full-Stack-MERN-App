@@ -21,11 +21,15 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 
-const FormsDiv = styled.div`
-  display: flex;
+export const FormsDiv = styled.div`
+  display: flex; //flex
   flex-direction: column;
   place-content: center;
-  padding: 40px;
+  padding: 20px 40px;
+  transition: all 1.7s;
+  opacity: 0;
+  width: 0px;
+  z-index: -1;
 `
 const Fdform = styled.form`
   display: flex;

@@ -11,27 +11,9 @@ import backgroundVideo from '../../../assets/lrvideo.mp4'
 
 
 //import Styles...
-import { InputCover, LrContainer } from './index.styles';
+import { InputCover,LrContainer,BgVideo,HeadCover,Bgcover } from './index.styles';
 import authSubComponent from '../../Components/authSubComponent';
-
-
-
-const BgVideo = styled.video`
-  position: fixed;
-  top: 0;
-  height: 100%;
-  transform: translate(-50%, 10px);
-  left: 50%;
-  border-radius: 25px;
-  z-index: -1;
-  opacity: 0.8;
-  filter: sepia(1);
-  
-
-  
-`
-
-
+import LogoLogin from "../../../assets/LogoLogin.png"
 
 
 
@@ -62,15 +44,22 @@ function LoginVregister({user,setUser})
 
   return (
           <>
+
+          <Bgcover>
             <BgVideo autoPlay loop muted><source src={backgroundVideo} type="video/mp4" /> </BgVideo>
             
             <LrContainer>
+                <HeadCover>
+                  <img src={LogoLogin} width="200px" alt='loging screen Logo'/>
+                  <h2>Chat-Pal</h2>
+                  <h3>Chat with your best friends in <span>Privacy</span></h3>
+                </HeadCover>
                 <InputCover>
                   <SelectButtons setformType={setformType} setulinput={setulinput} />
                   <AuthForms setulinput={setulinput} ulinput={ulinput} formType={formType} />
                 </InputCover>
             </LrContainer>
-            
+          </Bgcover>  
           </>
         )
 }
